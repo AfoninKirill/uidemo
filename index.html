@@ -1,0 +1,406 @@
+<html>
+  <head> </head>
+  <body>
+  
+	<style>
+	body {
+  background: gray;
+  height: 100vh;
+  width:100vw;
+  padding: 0;
+  margin: 0;
+}
+
+.transcript-result-container {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  background: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.speaker-list-container {
+  width: 266px;
+  border-right: 1px solid #ddd;
+  /* display: none; */
+}
+
+.speaker-list-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+  padding: 16px 0 16px 16px;
+  background: #efefef;
+}
+
+.speaker-list {
+  padding: 8px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.speaker-elem {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  margin: 8px 0;
+  color: #222222;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.speaker-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 50%;
+  background: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.speaker-name {
+  padding-left: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.transcript-result {
+  padding: 12px 24px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+/* Тонкий современный скроллбар */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Для Firefox */
+* {
+    scrollbar-color: rgba(0, 0, 0, 0.3) transparent;
+    scrollbar-width: thin;
+}
+
+
+.transcript-elem {
+  display: flex;
+  flex-direction: row;
+  padding: 12px 0;
+}
+
+.transcript-entry {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border: 1px solid #dddddd;
+  border-radius: 6px 6px 6px 0;
+  background: #f8f8f8;
+  padding: 16px;
+  position: relative;
+  margin-left: 15px;
+}
+
+
+.transcript-entry::before {
+  content: "";
+  position: absolute;
+  left: -19px;
+  top: calc(100% - 13px);
+  width: 23px;
+  height: 14px;
+  background: #f8f8f8;
+  clip-path: path(
+    "M17.3788 0C15.0081 6.08972 8.48906 10.0966 3.39099 12.1738C2.85318 12.393 3.01009 13.4814 3.58585 13.4814L23 13.4999L18.6665 0H17.3788Z"
+  );
+}
+
+.transcript-entry::after {
+  content: "";
+  position: absolute;
+  left: -19px;
+  top: calc(100% - 13px);
+  width: 23px;
+  height: 14px;
+  background: #dddddd;
+  clip-path: path(
+    "M17.1572 0C16.2727 3.00139 13.8765 5.60882 10.9513 7.73854C7.38421 10.3356 3.15385 12.13 0.352878 12.9829C0.119605 13.054 -0.0289083 13.2973 0.00474174 13.5534C0.0383918 13.8095 0.243918 14 0.486526 14L23 14V13L3.47758 12.963C5.98339 11.9538 8.90593 10.4836 11.5001 8.59485C14.5686 6.36079 17.266 3.47515 18.1726 0H17.1572Z"
+  );
+}
+
+.transcript-time {
+  font-size: 11px;
+  color: #636363;
+  margin-bottom: 12px;
+}
+
+.transcript-text {
+  font-size: 13px;
+  color: #000000;
+}
+
+	</style>
+  
+    <div class="transcript-result-container">
+      <div class="speaker-list-container">
+        <div class="speaker-list-title">Участники</div>
+        <div class="speaker-list">
+          
+          <div class="speaker-elem">
+            <div class="speaker-icon" style="background: #daf2be">ММ</div>
+            <div class="speaker-name">Макарова Марина</div>
+          </div>
+
+          <div class="speaker-elem">
+            <div class="speaker-icon" style="background: #94efff">КА</div>
+            <div class="speaker-name">Кирилл Афонин</div>
+          </div>
+
+          <div class="speaker-elem">
+            <div class="speaker-icon" style="background: #fae1ff">ИИ</div>
+            <div class="speaker-name">Иван Иванович</div>
+          </div>
+
+          <div class="speaker-elem">
+            <div class="speaker-icon" style="background: #fff3aa">ПП</div>
+            <div class="speaker-name">Петр Петрович</div>
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="transcript-result">
+        
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #fae1ff; align-self: flex-end"
+          >
+            ИИ
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">00:05</div>
+            <div class="transcript-text">
+              результат результат результат результатрезультатрезультатрезультат
+              результат результат результат результат результат результат
+            </div>
+          </div>
+        </div>
+
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+        <div class="transcript-elem">
+          <div
+            class="speaker-icon"
+            style="background: #94efff; align-self: flex-end"
+          >
+            КА
+          </div>
+          <div class="transcript-entry">
+            <div class="transcript-time">01:14</div>
+            <div class="transcript-text">результат результат результат</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
